@@ -1,0 +1,40 @@
+.carViewObject {
+    margin-top: 2vh;
+    background: linear-gradient(#000000, #312e2e);
+    width: 90%;
+    height: 13vh;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.5s;
+}
+
+.carViewObject:hover {
+    transform: scale(1.05);
+}
+
+.carViewObjectInfo {
+    width: 70%;
+    margin-left: 5%;
+    display: flex;
+    color: #597ddf;
+    ;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 13%;
+}
+
+.carsViewObjectInfoSold {
+    border: transparent;
+    background: transparent;
+    cursor: pointer;
+    margin-right: 10%;
+    transition: transform 0.5s;
+}
+
+.carsViewObjectInfoSold:hover {
+    transform: scale(1.2);
+}
