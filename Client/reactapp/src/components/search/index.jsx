@@ -6,12 +6,10 @@ function Search() {
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
-        // chamar a função de filtrar dados
         setResults(filterData(event.target.value));
     }
 
     const filterData = (query) => {
-        // filtrar os dados com base na consulta do usuário
         const filteredData = myData.filter((item) =>
             item.name.toLowerCase().includes(query.toLowerCase())
         );
