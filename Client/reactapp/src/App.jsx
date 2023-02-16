@@ -1,5 +1,4 @@
 import './style.css';
-import CardList from './components/List';
 import Box from './components/Box';
 import List from './components/List';
 
