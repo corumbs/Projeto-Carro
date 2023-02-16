@@ -1,5 +1,7 @@
 import { FiDollarSign } from "react-icons/fi";
 import './style.css';
+
+
 function CardList(props) {
     return (
         <div className="carViewObject">
