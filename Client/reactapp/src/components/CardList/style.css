@@ -30,11 +30,6 @@
 .carsViewObjectInfoSold {
     border: transparent;
     background: transparent;
-    cursor: pointer;
     margin-right: 10%;
-    transition: transform 0.5s;
-}
 
-.carsViewObjectInfoSold:hover {
-    transform: scale(1.2);
 }

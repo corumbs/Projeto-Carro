@@ -3,61 +3,86 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { api } from '../../services/api';
 import './style.css';
 
-function Modal({ onClose }) {
+function Modal({ onClose, car, onEdit = false }) {
     const initialValues = {
-        veiculo: '',
-        marca: '',
-        ano: '',
-        vendido: false,
-        descricao: ''
+        veiculo: onEdit ? car.veiculo : "",
+        marca: onEdit ? car.marca : "",
+        ano: onEdit ? car.ano : "",
+        vendido: onEdit ? car.vendido : false,
+        descricao: onEdit ? car.descricao : ""
     };
 
     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+        if (!onEdit) {
+            try {
+                await api.post('/veiculos', values);
+                onClose();
+                resetForm();
+                window.location.reload();
+            } catch (err) {
+                console.error('Ocorreu um erro ao salvar o novo carro: ', err);
+            } finally {
+                setSubmitting(false);
+            }
+        }
+
         try {
-            await api.post('/veiculos', values);
+            console.log(values)
+            console.log(car)
+            await api.put(`/veiculos/${car.id}`, {
+                veiculo: values.veiculo,
+                marca: values.marca,
+                ano: values.ano,
+                vendido: values.vendido,
+                descricao: values.descricao
+            });
             onClose();
-            resetForm();
             window.location.reload();
-        } catch (err) {
+
+        }
+        catch (err) {
             console.error('Ocorreu um erro ao salvar o novo carro: ', err);
+
         } finally {
             setSubmitting(false);
         }
+
     };
 
     return (
         <div className="modal">
             <div className="modalContent">
                 <h2>Adicionar carro</h2>
+
                 <Formik initialValues={initialValues} onSubmit={handleSubmit}>
                     {({ isSubmitting }) => (
-                        <Form>
-                            <label>
+                        <Form className="modalContentForm">
+                            <label >
                                 Nome:
-                                <Field type="text" name="veiculo" required />
+                                <Field className="modalContentFormText" type="text" name="veiculo" required />
                                 <ErrorMessage name="veiculo" component="div" className="error" />
                             </label>
-                            <label>
+                            <label >
                                 Marca:
-                                <Field type="text" name="marca" required />
+                                <Field className="modalContentFormText" type="text" name="marca" required />
                                 <ErrorMessage name="marca" component="div" className="error" />
                             </label>
                             <label>
                                 Ano:
-                                <Field type="number" name="ano" required />
+                                <Field className="modalContentFormYear" type="number" name="ano" required />
                                 <ErrorMessage name="ano" component="div" className="error" />
                             </label>
                             <label>
                                 Vendido:
                                 <Field type="checkbox" name="vendido" />
                             </label>
-                            <label>
+                            <label >
                                 Descrição:
-                                <Field type="text" name="descricao" required />
+                                <Field className="modalContentFormDesc" type="text" name="descricao" required />
                                 <ErrorMessage name="descricao" component="div" className="error" />
                             </label>
-                            <button type="submit" disabled={isSubmitting}>Salvar</button>
-                            <button type="button" onClick={onClose}>Fechar</button>
+                            <button className="modalContentFormSubmit" type="submit" disabled={isSubmitting}>Salvar</button>
+                            <button className="modalContentFormCancel" type="button" onClick={onClose}>Fechar</button>
                         </Form>
                     )}
                 </Formik>

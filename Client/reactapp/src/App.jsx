@@ -1,6 +1,6 @@
 import './style.css';
 import Box from './components/Box';
-import List from './components/List';
+import Main from './components/Main';
 
 
 function App() {
@@ -11,13 +11,12 @@ function App() {
       <div className="box">
         <Box />
         <div className="main">
-          <List />
-          <div className="viewCars">
+          <Main />
 
-          </div>
         </div>
       </div>
     </div>
+
 
   )
 }

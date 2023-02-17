@@ -3,8 +3,10 @@ import './style.css';
 
 
 function CardList(props) {
+    const { onClick } = props;
+
     return (
-        <div className="carViewObject">
+        <div className="carViewObject" onClick={onClick}>
 
             <div className="carViewObjectInfo">
                 <h1>{props.name}</h1>

@@ -4,7 +4,7 @@ function Box() {
     return (
         <div className="box">
             <h1 className="title">
-                Sistema carro
+                Auto HK
             </h1>
         </div>
 

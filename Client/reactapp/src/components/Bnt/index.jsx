@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import Modal from '../modal';
+import { FiPlus } from "react-icons/fi";
+import './style.css';
 
 
-function Bnt() {
+
+function Bnt({ car, onEdit = false }) {
     const [showModal, setShowModal] = useState(false);
 
     function handleAddCarClick() {
@@ -15,10 +18,10 @@ function Bnt() {
 
     return (
         <div className="carsModButtons">
-            <button className="carsModButtonAdd" onClick={handleAddCarClick}>
-                Adicionar carro
+            <button FiPlus className="carsModButtonAdd" onClick={handleAddCarClick}>
+                <FiPlus size={25} color="#597ddf" />
             </button>
-            {showModal && <Modal onClose={handleCloseModal} />}
+            {showModal && <Modal onClose={handleCloseModal} car={car} onEdit={onEdit} />}
         </div>
     );
 }
