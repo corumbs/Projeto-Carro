@@ -58,7 +58,7 @@ function Main() {
                 <h1>Detalhes</h1>
                 {selectedCar && (
                     <div className="carDetailsViewDetails">
-                        <h2>{selectedCar.veiculo}</h2>
+                        <h2 className="carDetailsViewDetailsName">{selectedCar.veiculo}</h2>
                         <div className="carDetailsViewDetailsBY">
                             <p><strong>Marca:</strong><br></br> {selectedCar.marca}</p>
                             <p><strong>Ano:</strong><br></br> {selectedCar.ano}</p>

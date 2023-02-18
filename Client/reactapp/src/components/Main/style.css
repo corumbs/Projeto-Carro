@@ -1,78 +1,73 @@
-main {
-    width: 100%;
-    height: 100%;
+.main {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    margin: 20px;
 }
 
 .cars {
-    width: 35%;
-    height: 79.5vh;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
+    width: 50%;
+    padding-right: 20px;
+    border-right: 1px solid #ccc;
 }
 
 .carsMod {
-    margin-top: 5%;
-    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-around;
-
+    margin-bottom: 20px;
 }
-
 
 .carsModSearchInput {
-    border-radius: 8px;
-    height: 25px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
     width: 100%;
-    background: rgba(73, 151, 252, 0.466);
-    cursor: pointer;
+    box-sizing: border-box;
 }
-
 
 .carView {
-    width: 100%;
-    height: 100%;
-    direction: rtl;
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    height: 400px;
 }
 
-.carDetailsView {
-    width: 60%;
-    margin-right: 2%;
-    height: 75vh;
 
+
+.carDetailsView {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.carDetailsView h1 {
+    margin-bottom: 20px;
 }
 
 .carDetailsViewDetails {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #ccc;
+}
 
+.carDetailsViewDetailsName {
+    font-size: 28px;
+    margin-bottom: 10px;
 }
 
 .carDetailsViewDetailsBY {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    gap: 40vh;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.carDetailsViewDetailsBY p {
+    margin: 0;
 }
 
 .carDetailsViewDetailsFooter {
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
 }

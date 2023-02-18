@@ -52,7 +52,7 @@ function Modal({ onClose, car, onEdit = false }) {
     return (
         <div className="modal">
             <div className="modalContent">
-                <h2>Adicionar carro</h2>
+                <h2>{onEdit ? "Editar carro" : "Adicionar carro"}</h2>
 
                 <Formik initialValues={initialValues} onSubmit={handleSubmit}>
                     {({ isSubmitting }) => (
@@ -82,6 +82,26 @@ function Modal({ onClose, car, onEdit = false }) {
                                 <ErrorMessage name="descricao" component="div" className="error" />
                             </label>
                             <button className="modalContentFormSubmit" type="submit" disabled={isSubmitting}>Salvar</button>
+                            {onEdit && (
+                                <button
+                                    className="modalContentFormCancel"
+                                    type="button"
+                                    onClick={async () => {
+                                        if (window.confirm("Tem certeza que deseja excluir este carro?")) {
+                                            try {
+                                                await api.delete(`/veiculos/${car.id}`);
+                                                onClose();
+                                                window.location.reload();
+                                            } catch (err) {
+                                                console.error('Ocorreu um erro ao excluir o carro: ', err);
+                                            }
+                                        }
+                                    }}
+                                >
+                                    Deletar
+                                </button>
+                            )}
+
                             <button className="modalContentFormCancel" type="button" onClick={onClose}>Fechar</button>
                         </Form>
                     )}
